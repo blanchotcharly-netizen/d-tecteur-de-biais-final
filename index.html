@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D-tecteur de biais</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://js.puter.com/v2/"></script>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo D-tecteur" class="logo">
+    <h1>D-tecteur de biais</h1>
+    <p>Analyse vos articles pour détecter les biais et la neutralité</p>
+  </header>
+
+  <main>
+    <section class="input-section">
+      <textarea id="inputText" rows="10" placeholder="Colle ton article ici..."></textarea>
+      <button id="analyzeBtn">Analyser</button>
+      <div id="loading" class="hidden">Analyse en cours...</div>
+    </section>
+
+    <section id="results" class="hidden">
+      <div class="result-card">
+        <h2>Score de neutralité : <span id="neutralityScore"></span></h2>
+
+        <div class="result-block">
+          <h3>Biais détectés :</h3>
+          <ul id="biasList"></ul>
+        </div>
+
+        <div class="result-block">
+          <h3>Mots et tournures connotés :</h3>
+          <ul id="connotationList"></ul>
+        </div>
+
+        <div class="result-block">
+          <h3>Sources et orientation :</h3>
+          <ul id="sourceList"></ul>
+        </div>
+
+        <div class="result-block">
+          <h3>Frames :</h3>
+          <ul id="frameList"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 D-tecteur de biais</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
