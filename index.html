@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>D-tecteur de biais</title>
+  <title>Detecto — détecteur de biais journalistiques</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Puter.js pour l’IA -->
   <script src="https://js.puter.com/v2/"></script>
 </head>
 <body>
+
   <header>
-    <img src="logo.png" alt="Logo D-tecteur" class="logo">
-    <h1>D-tecteur de biais</h1>
-    <p>Analyse vos articles pour détecter les biais et la neutralité</p>
+    <img src="logo.png" alt="Logo Detecto" class="logo">
+    <h1>Detecto</h1>
+    <p>Analyse les biais journalistiques d’un article</p>
   </header>
 
   <main>
     <section class="input-section">
       <textarea id="inputText" rows="10" placeholder="Colle ton article ici..."></textarea>
       <button id="analyzeBtn">Analyser</button>
-      <div id="loading" class="hidden">Analyse en cours...</div>
+      <div id="loading" class="hidden">Analyse en cours…</div>
     </section>
 
     <section id="results" class="hidden">
@@ -36,12 +39,12 @@
         </div>
 
         <div class="result-block">
-          <h3>Sources et orientation :</h3>
+          <h3>Sources & orientation :</h3>
           <ul id="sourceList"></ul>
         </div>
 
         <div class="result-block">
-          <h3>Frames :</h3>
+          <h3>Frames & thèmes :</h3>
           <ul id="frameList"></ul>
         </div>
       </div>
@@ -49,9 +52,11 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 D-tecteur de biais</p>
+    <p>&copy; 2025 Detecto</p>
   </footer>
 
   <script src="script.js"></script>
+
 </body>
 </html>
+
