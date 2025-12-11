@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detecto — détecteur de biais journalistiques</title>
+  <title>Detecto — Analyse des biais journalistiques d’un article</title>
+  <meta name="description" content="Detecto permet d'analyser automatiquement les biais dans un article journalistique, y compris les biais politiques, émotionnels et idéologiques.">
+  <meta name="keywords" content="journalisme, biais, analyse d'article, neutralité, Detecto, intelligence artificielle">
+  <meta name="author" content="Detecto">
   <link rel="stylesheet" href="style.css">
 
   <!-- Puter.js pour l’IA -->
@@ -14,18 +17,21 @@
   <header>
     <img src="logo.png" alt="Logo Detecto" class="logo">
     <h1>Detecto</h1>
-    <p>Analyse les biais journalistiques d’un article</p>
+    <p>Analysez les biais journalistiques d’un article en un clic</p>
   </header>
 
   <main>
     <section class="input-section">
       <textarea id="inputText" rows="10" placeholder="Colle ton article ici..."></textarea>
       <button id="analyzeBtn">Analyser</button>
-      <div id="loading" class="hidden">Analyse en cours…</div>
+      <div id="loading" class="hidden">
+        <div class="loader"></div>
+        Analyse en cours…
+      </div>
     </section>
 
     <section id="results" class="hidden">
-      <div class="result-card">
+      <div class="result-card fade-in">
         <h2>Score de neutralité : <span id="neutralityScore"></span></h2>
 
         <div class="result-block">
@@ -56,7 +62,7 @@
   </footer>
 
   <script src="script.js"></script>
-
 </body>
 </html>
+
 
