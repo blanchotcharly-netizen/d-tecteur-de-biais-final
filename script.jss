@@ -23,15 +23,11 @@ Article :
 `;
 
   try {
-    const response = await puter.ai.chat(prompt, {
-      model: "google/gemini-2.5-flash"
-    });
-    
-    // Puter.js returns text (string) containing JSON
+    const response = await puter.ai.chat(prompt, { model: "google/gemini-2.5-flash" });
     return JSON.parse(response);
   } catch (error) {
     console.error("Erreur Puter:", error);
-    alert("Erreur IA : l'analyse n'a pas pu être générée.");
+    alert("Erreur IA : l'analyse n'a pas pu être générée. Vérifie ta connexion ou réessaie.");
     return null;
   }
 }
@@ -40,11 +36,12 @@ document.getElementById("analyzeBtn").addEventListener("click", async () => {
   const article = document.getElementById("inputText").value.trim();
   if (!article) return alert("Colle un article avant d’analyser.");
 
-  document.getElementById("loading").classList.remove("hidden");
+  const loadingEl = document.getElementById("loading");
+  loadingEl.classList.remove("hidden");
 
   const result = await analyzeArticle(article);
 
-  document.getElementById("loading").classList.add("hidden");
+  loadingEl.classList.add("hidden");
 
   if (result) {
     document.getElementById("results").classList.remove("hidden");
