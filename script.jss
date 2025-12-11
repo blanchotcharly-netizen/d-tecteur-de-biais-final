@@ -1,5 +1,13 @@
-async function analyzeArticle(article) {
-  const prompt = `
+document.getElementById("analyzeBtn").addEventListener("click", async () => {
+  const article = document.getElementById("inputText").value.trim();
+  if (!article) return alert("Colle un article avant d’analyser.");
+
+  const loadingEl = document.getElementById("loading");
+  loadingEl.classList.remove("hidden");
+
+  try {
+    // Appel Puter.js correctement selon la doc officielle
+    const prompt = `
 Tu es Detecto, un outil d'analyse des biais journalistiques.
 
 Analyse l'article ci-dessous pour :
@@ -22,29 +30,15 @@ Article :
 """${article}"""
 `;
 
-  try {
+    // Ici on suit l’exemple Puter officiel : .chat() renvoie une promesse
     const response = await puter.ai.chat(prompt, { model: "google/gemini-2.5-flash" });
-    return JSON.parse(response);
-  } catch (error) {
-    console.error("Erreur Puter:", error);
-    alert("Erreur IA : l'analyse n'a pas pu être générée. Vérifie ta connexion ou réessaie.");
-    return null;
-  }
-}
 
-document.getElementById("analyzeBtn").addEventListener("click", async () => {
-  const article = document.getElementById("inputText").value.trim();
-  if (!article) return alert("Colle un article avant d’analyser.");
+    // response est un string JSON, on parse
+    const result = JSON.parse(response);
 
-  const loadingEl = document.getElementById("loading");
-  loadingEl.classList.remove("hidden");
-
-  const result = await analyzeArticle(article);
-
-  loadingEl.classList.add("hidden");
-
-  if (result) {
+    loadingEl.classList.add("hidden");
     document.getElementById("results").classList.remove("hidden");
+
     document.getElementById("neutralityScore").textContent = result.neutrality + "%";
     document.getElementById("biasList").innerHTML = result.biases.map(b => `<li>${b}</li>`).join("");
     document.getElementById("connotationList").innerHTML =
@@ -53,6 +47,11 @@ document.getElementById("analyzeBtn").addEventListener("click", async () => {
       result.sources.map(s => `<li><strong>${s.citation}</strong> : ${s.analyse}</li>`).join("");
     document.getElementById("frameList").innerHTML =
       result.frames.map(f => `<li>${f}</li>`).join("");
+
+  } catch (error) {
+    loadingEl.classList.add("hidden");
+    console.error("Erreur Puter:", error);
+    alert("Erreur IA : impossible de générer l'analyse. Vérifie ta connexion et réessaie.");
   }
 });
 
