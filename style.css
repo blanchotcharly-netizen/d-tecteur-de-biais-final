@@ -1,10 +1,19 @@
+/* Reset simple */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f0f8ff;
   color: #0f1c4d;
+  line-height: 1.6;
 }
 
+/* Header */
 header {
   text-align: center;
   padding: 2rem 1rem;
@@ -14,13 +23,30 @@ header {
 
 header .logo {
   width: 100px;
+  height: auto;
   margin-bottom: 0.8rem;
 }
 
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Main */
 main {
   max-width: 900px;
   margin: 2rem auto;
   padding: 0 1rem;
+}
+
+/* Zone de saisie */
+.input-section {
+  margin-bottom: 2rem;
 }
 
 textarea {
@@ -30,11 +56,12 @@ textarea {
   border: 1px solid #2a6eff;
   border-radius: 8px;
   outline: none;
+  resize: vertical;
 }
 
 textarea:focus {
   border-color: #0047b3;
-  box-shadow: 0 0 8px rgba(0,71,179,0.2);
+  box-shadow: 0 0 8px rgba(0, 71, 179, 0.2);
 }
 
 button {
@@ -48,8 +75,11 @@ button {
   transition: 0.3s;
 }
 
-button:hover { background: #0047b3; }
+button:hover {
+  background: #0047b3;
+}
 
+/* Chargement */
 #loading {
   display: flex;
   align-items: center;
@@ -73,6 +103,7 @@ button:hover { background: #0047b3; }
   100% { transform: rotate(360deg); }
 }
 
+/* Résultats */
 .result-card {
   margin-top: 2rem;
   padding: 1.6rem;
@@ -81,20 +112,44 @@ button:hover { background: #0047b3; }
   box-shadow: 0px 4px 16px rgba(0,0,0,0.1);
 }
 
-.result-block { margin-top: 1rem; }
-.result-block h3 { color: #2a6eff; margin-bottom: 0.3rem; }
-ul { list-style: disc; margin-left: 1.5rem; }
+.result-block {
+  margin-top: 1rem;
+}
 
-footer { text-align: center; padding: 1.5rem; opacity: 0.7; }
+.result-block h3 {
+  color: #2a6eff;
+  margin-bottom: 0.3rem;
+}
 
-.hidden { display: none; }
+.result-block ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  opacity: 0.7;
+}
+
+/* Classes utilitaires */
+.hidden {
+  display: none;
+}
 
 .fade-in {
   animation: fadeIn 0.8s ease-in-out;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
